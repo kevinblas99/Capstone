@@ -2,8 +2,8 @@
 function Footer() {
     return (
 <footer>
-    <div>
-        <h3>Doormat</h3>
+    <div class="doormat">
+        <h4>Doormat</h4>
         <ul>
         <li><a href="localhost:3000">Home</a></li>
         <li><a href="localhost:3000">About us</a></li>
@@ -12,19 +12,21 @@ function Footer() {
         <li><a href="localhost:3000">Log in</a></li>
         </ul>
     </div>
-    <div>
-        <h3>Contact</h3>
+    <div class="contact">
+        <h4>Contact</h4>
         <ul>
         <li><a href="localhost:3000">Address</a></li>
         <li><a href="localhost:3000">Phone Number</a></li>
         <li><a href="localhost:3000">Email</a></li>
         </ul>
     </div>
-    <div>
-        <h3>Social Media</h3>
+    <div class="socials">
+        <h4>Social Media</h4>
+        <ul>
         <li><a href="localhost:3000">Instagram</a></li>
         <li><a href="localhost:3000">Facebook</a></li>
         <li><a href="localhost:3000">Twitter</a></li>
+        </ul>
     </div>
 
 </footer>
