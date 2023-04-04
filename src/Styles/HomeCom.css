@@ -1,0 +1,84 @@
+
+header img {
+    width: min(50vw, 380px);
+    height: 500px;
+
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 50px;
+    margin-bottom: min(50vw, -100px);;
+    border: solid black 1px;
+    align-items: center;
+    justify-content: center;
+    
+}
+.titleshome{
+    grid-column: 1;
+}
+
+.title {
+
+    font-family: 'Markazi text';
+    font-size: 40px;
+    font-weight: bold;
+    color: #F4CE14;
+    text-align: center;
+    grid-row: 1;
+}
+
+.subtitle {
+
+    font-family: 'Markazi text';
+    font-size: 30px;
+    font-weight: medium;
+    color: white;
+    text-align: left;
+    grid-row: 1;
+
+
+}
+
+.descricontainer {
+
+}
+
+.divbutton{
+    text-align: center;
+    grid-row: 2;
+    margin: 0;
+}
+
+.description {
+    padding-left: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    padding-bottom: 100px;
+}
+
+
+.hero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+    grid-area: header;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    background-color: #495E57;
+    margin-bottom: min(50vw, 200px);
+}
+
+.rtable {
+
+    width: min(50vw, 210px);
+    height: 40px;
+    background-color: #F4CE14;
+    color: black;
+    font-weight: bolder;
+    border-radius: 16px;
+    border-style: solid;
+    cursor: pointer;
+    
+}
