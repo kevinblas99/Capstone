@@ -36,7 +36,7 @@ footer {
 .contact a {
     text-decoration: none;
     color: white;
-    font-weight:medium;
+    font-weight:300;
     font-size: 14px;
     text-align: center;
 }
@@ -44,7 +44,7 @@ footer {
 .doormat a{
     text-decoration: none;
     color: white;
-    font-weight:medium;
+    font-weight:300;
     font-size: 14px;
     text-align: center;
     margin: 0;
@@ -54,7 +54,7 @@ footer {
 .socials a{
     text-decoration: none;
     color: white;
-    font-weight:medium;
+    font-weight:300;
     font-size: 14px;
     text-align: center;
 }
@@ -63,4 +63,8 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+.sss {
+    font-weight: bold;
 }

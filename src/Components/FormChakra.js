@@ -20,6 +20,7 @@ import useSubmit from "../Hooks/useSubmit";
 import {useState} from "react";
 import { useEffect } from "react";
 import { useAlertContext } from "../Hooks/alertContext";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -71,6 +72,8 @@ useEffect (() => {
  const [realTime, setRealTime] = useState(
     props.availableTimes.map((times) => <option> {times} </option>)
 );
+
+let navigate = useNavigate()
 
 function handleDateChange(e) {
     setDate(e.target.value)
@@ -185,6 +188,7 @@ return (
                 <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
               </FormControl>
                 <Button
+                onClick={() => {navigate("/confirmation")}}
             type="submit" 
             width="min(50vw, 210px)"
             height= "40px"
