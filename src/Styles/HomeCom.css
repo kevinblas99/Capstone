@@ -32,15 +32,12 @@ header img {
     font-size: 30px;
     font-weight: medium;
     color: white;
-    text-align: left;
+    text-align: center;
     grid-row: 1;
 
 
 }
 
-.descricontainer {
-
-}
 
 .divbutton{
     text-align: center;

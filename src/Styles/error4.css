@@ -1,0 +1,31 @@
+.erroro {
+    display: grid;
+    justify-content: center;
+    place-items: center;
+    padding: 100px;
+    background-color: #EDEFEE;
+}
+
+.erhead {
+    display: block;
+    text-align: center;
+    font-family: 'Markazi text';
+    font-size: 2.5vw;
+    color: #495E57;
+
+
+}
+
+.numbers {
+    font-size: 30vw;
+    color: #F4CE14;
+    font-family: 'Arvo', serif;
+}
+
+.pagenot {
+    margin-top: -80px;
+    font-size: 3vw;
+    color: black;
+    font-weight: bold;
+    font-family: 'Arvo', serif;
+}

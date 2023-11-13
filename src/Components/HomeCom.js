@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import Hero from "../images/Hero.jpg";
+import Heroop from "../images/Heroop.jpg";
 import "../Styles/HomeCom.css";
 function HomeCom() {
     let navigate = useNavigate();
     return (
 <header class="hero">
-    <div class="titleshome">
+    <div class="titleshome" id="home-section" >
     <h1 class="title">Little Lemon</h1>
     <h3 class="subtitle">Chicago</h3>
     </div>
@@ -17,7 +17,7 @@ function HomeCom() {
      </div>
     <button onClick={() => {navigate("/reservations")}} class="rtable" >Reserve a table</button>
     </div>
-    <img src={Hero} class="heroimg"/>
+    <img src={Heroop} class="heroimg"/>
 </header>
 
     );

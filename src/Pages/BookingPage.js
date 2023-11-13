@@ -1,9 +1,6 @@
-import BookingForm from "../Components/BookingForm";
 import { useReducer } from "react";
 import { fetchAPI } from "../API/bookingAPI";
-import "../Styles/BookingPage.css";
 import FormChakra from "../Components/FormChakra";
-import Alert from "../Hooks/Alert";
 
 
 

@@ -1,11 +1,12 @@
 import React from 'react'
-import { Text , Box, AbsoluteCenter} from '@chakra-ui/react';
+import { Text , Box, AbsoluteCenter, Container} from '@chakra-ui/react';
 import {CheckCircleIcon} from '@chakra-ui/icons';
 function ConfirmationPage() {
   return (
-    <Box margin={20} backgroundColor="#EDEFEE" borderRadius={15} p={15} align="center" >
+    <Container maxW={['sm','md','lg','2xl']}>
+    <Box margin={20} backgroundColor="#EDEFEE" borderRadius={15} p={15} align="center">
     <div className="confirma">
-        <Text fontSize="2xl" textColor="#495E57" fontWeight="bold" align="center">Congratulations, We will be expecting you.</Text>
+        <Text fontSize="2xl" textColor="#495E57" fontWeight="bold" align="center">Thank you for booking with us.</Text>
         <CheckCircleIcon margin={10} color="green" boxSize={20} alignSelf="center" />
     <div>
 
@@ -17,6 +18,7 @@ function ConfirmationPage() {
 
     </div>
     </Box>
+    </Container>
   )
 }
 

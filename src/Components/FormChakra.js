@@ -16,195 +16,166 @@ import {
   Heading
 } from "@chakra-ui/react";
 import * as Yup from 'yup';
-import useSubmit from "../Hooks/useSubmit";
 import {useState} from "react";
-import { useEffect } from "react";
-import { useAlertContext } from "../Hooks/alertContext";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from 'react-router-dom';
 
+         export default function FormChakra(props) {
 
-
-        const FormChakra = (props) => {
-    const [first, setFirst] = useState('');
-    const [last, setLast] = useState('');
-    const [email, setEmail] = useState('');
-    const [ocassion, setOcassion] = useState('Birthday');
-    const [guests, setGuests] = useState('');
-    const [date, setDate] = useState('');
-
-
-    const {isLoading, response, submit} = useSubmit();
-    const { onOpen } = useAlertContext();
-    const formik = useFormik({
-        initialValues: {
-            bookdate:"" ,
-            restime:"" ,
-          firstName:"" ,
-          lastName:"",
-          email:"" ,
-          guests:"",
-        },
-        onSubmit: (values) => {
-          submit('http://localhost:3001/reservations', values);
-        },
-
+          const navigate = useNavigate();
+  const [date, setDate] = useState('');
+  const formik = useFormik({
+    initialValues: {
+      first: "",
+      last: "",
+      email: "",
+      time: "17:00",
+      ocassion: "birthday",
+      guests: "",
+      date: "",
+    },
     validationSchema: Yup.object({
-    firstName:Yup.string().required("Required"),
-    lastName:Yup.string().required("Required"),
-    email:Yup.string().email("Invalid email address").required("Required"),
-    guests:Yup.number().
-    integer().
-    min(1, "Must be more than nobody").
-    max(16,"Must be less then 16 guests").
-    required("Required"),
-  }),
-});
-
-useEffect (() => {
-    if (response) {
-      onOpen(response.type , response.message);
-      if (response.type === 'success')
-      {formik.resetForm();
-      }
+      first: Yup.string().required("Required"),
+      last: Yup.string().required("Required"),
+      email: Yup.string().email("Invalid email address").required("Required"),
+      guests: Yup.number().
+        min(1, "Must be more than nobody").
+        max(16, "Must be less then 16 guests").
+        required("Required"),
+      date: Yup.date().required("Required"),
+    }),
+    onSubmit: async (values,actions) => {
+      console.log (values);
+      console.log (actions);
+      await new Promise ((resolve) => setTimeout(resolve, 1000));
+      actions.resetForm();
+      navigate("/confirmation");
     }
-  }, [response]);
+  });
 
- const [realTime, setRealTime] = useState(
+  const [realTime, setRealTime] = useState(
     props.availableTimes.map((times) => <option> {times} </option>)
-);
+  );
 
-let navigate = useNavigate()
 
-function handleDateChange(e) {
-    setDate(e.target.value)
+  function handleDateChange(e) {
+    setDate(e.target.value);
 
 
     var stringify = e.target.value;
     const date = new Date(stringify);
 
     props.updateTimes(date);
-    setRealTime(props.availableTimes.map((times) => <option>{times}</option>)); }
+    setRealTime(props.availableTimes.map((times) => <option>{times}</option>));
+  }
 
 
-return (
+  return (
     <VStack maxWidth="1500" p={20} alignItems="center">
-    <Heading as="h1" id="contactme-section">
-          Reserve Your Table
-    </Heading>
-    <Box p={6} rounded="xl" w={["sm","md","lg","xl","2xl"]} backgroundColor="#EDEFEE">
-<form onSubmit={formik.handleSubmit}>
-<VStack spacing={4}>
-  <FormControl isInvalid={  formik.errors.bookDate && formik.touched.bookDate}>
-    <FormLabel htmlFor="book-date">Choose Date</FormLabel>
-    <Input
-    border="solid #495E57"
-      id="book-date"
-      name="book-date"
-      type="date"
-      value={date}
-      onChange={handleDateChange}
-      {...formik.getFieldProps("book-date")}
-    />
-    </FormControl>
-  <FormControl isInvalid={  formik.errors.resTime && formik.touched.resTime}>
-    <FormLabel htmlFor="res-time">Choose time</FormLabel>
-    <Select
-    border="solid #495E57"
-      id="res-time"
-      name="res-time"
-      onChange={(e) => setRealTime(e.target.value)}
-      {...formik.getFieldProps("res-time")}>
-      {realTime}
-    </Select>
-    <FormErrorMessage>{formik.errors.guests}</FormErrorMessage>
-  </FormControl>
-  <FormControl isInvalid={formik.errors.guests && formik.touched.guests}>
-    <FormLabel htmlFor="guests">Number of Guests (Between 1 & 16)</FormLabel>
-    <NumberInput 
-    id="guests"
-    name="guests"
-    min={1} max={16}
-    defaultValue={1}
-    onChange={(e) => setGuests(e.target.value)}
-    {...formik.getFieldProps("guests")}
-    >
-  <NumberInputField
-  border="solid #495E57"
-      value={guests}
-      onChange={(e) => setGuests(e.target.value)}
-      {...formik.getFieldProps("guests")}/>
-</NumberInput>
-    <FormErrorMessage>{formik.errors.guests}</FormErrorMessage>
-  </FormControl>
-  <FormControl>
-    <FormLabel htmlFor="ocassion">Ocassion</FormLabel>
-    <Select 
-    border="solid #495E57"
-    id="ocassion"
-     name="ocassion"
-     value={ocassion}
-     onChange={(e) => setOcassion(e.target.value)}  
-     >
-    <option value="birthday">Birthday</option>
-      <option value="anniversary">Anniversary</option>
-      <option value="other">Other</option>
-    </Select>
-  </FormControl>
-  <FormControl isInvalid={  formik.errors.firstName && formik.touched.firstName}>
-                <FormLabel htmlFor="firstName">First Name</FormLabel>
-                <Input
+      <Heading as="h1" id="contactme-section">
+        Reserve Your Table
+      </Heading>
+      <Box p={6} rounded="xl" w={["sm", "md", "lg", "xl", "2xl"]} backgroundColor="#EDEFEE">
+        <form onSubmit={formik.handleSubmit}>
+          <VStack spacing={4}>
+            <FormControl isInvalid={formik.errors.date && formik.touched.date}>
+              <FormLabel htmlFor="date">Choose Date</FormLabel>
+              <Input
                 border="solid #495E57"
-                  id="firstName"
-                  name="firstName"
-                  value={first}
-                  onChange={(e) => setFirst(e.target.value)}
-                  {...formik.getFieldProps("firstName")}
-                />
-     <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
-    </FormControl>
-    <FormControl isInvalid={  formik.errors.lastName && formik.touched.lastName}>
-                <FormLabel htmlFor="lastName">Last Name</FormLabel>
-                <Input
+                name="date"
+                type="date"
+                value={date}
+                onChange={handleDateChange}
+                {...formik.getFieldProps("date")} />
+            </FormControl>
+            <FormControl isInvalid={formik.errors.time && formik.touched.time}>
+              <FormLabel htmlFor="time">Choose time</FormLabel>
+              <Select
                 border="solid #495E57"
-                  id="lastName"
-                  name="lastName"
-                  value={last}
-                  onChange={(e) => setLast(e.target.value)}
-                  {...formik.getFieldProps("lastName")}
-                />
-     <FormErrorMessage>{formik.errors.lastName}</FormErrorMessage>
-    </FormControl>
-    <FormControl isInvalid={formik.errors.email && formik.touched.email}>
-                <FormLabel htmlFor="email">Email Address</FormLabel>
-                <Input
+                name="time"
+                value={formik.values.time}
+                onChange={formik.handleChangeChange}
+                {...formik.getFieldProps("time")}>
+                {realTime}
+              </Select>
+              <FormErrorMessage>{formik.errors.time}</FormErrorMessage>
+            </FormControl>
+            <FormControl isInvalid={formik.errors.guests && formik.touched.guests}>
+              <FormLabel htmlFor="guests">Number of Guests (Between 1 & 16)</FormLabel>
+              <NumberInput
+                name="guests"
+                min={1} max={16}
+                defaultValue={1}
+                onChange={formik.handleChange}
+                {...formik.getFieldProps("guests")}
+              >
+                <NumberInputField
+                  border="solid #495E57"
+                  value={formik.values.guests}
+                  onChange={formik.handleChange}
+                  {...formik.getFieldProps("guests")} />
+              </NumberInput>
+              <FormErrorMessage>{formik.errors.guests}</FormErrorMessage>
+            </FormControl>
+            <FormControl>
+              <FormLabel htmlFor="ocassion">Ocassion</FormLabel>
+              <Select
                 border="solid #495E57"
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  {...formik.getFieldProps("email")}
-                />
-                <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
-              </FormControl>
-                <Button
-                onClick={() => {navigate("/confirmation")}}
-            type="submit" 
-            width="min(50vw, 210px)"
-            height= "40px"
-            backgroundColor="#F4CE14"
-            textColor="black"
-            fontWeight="bolder"
-            borderRadius="16px"
-            borderStyle="solid"
-            cursor= "pointer"
-                    >Reserve
+                name="ocassion"
+                value={formik.values.ocassion}
+                onChange={formik.handleChange}
+              >
+                <option value="birthday">Birthday</option>
+                <option value="anniversary">Anniversary</option>
+                <option value="other">Other</option>
+              </Select>
+            </FormControl>
+            <FormControl isInvalid={formik.errors.first && formik.touched.first}>
+              <FormLabel htmlFor="first">First Name</FormLabel>
+              <Input
+                border="solid #495E57"
+                name="first"
+                value={formik.values.first}
+                onChange={formik.handleChange}
+                {...formik.getFieldProps("first")} />
+              <FormErrorMessage>{formik.errors.first}</FormErrorMessage>
+            </FormControl>
+            <FormControl isInvalid={formik.errors.last && formik.touched.last}>
+              <FormLabel htmlFor="last">Last Name</FormLabel>
+              <Input
+                border="solid #495E57"
+                name="last"
+                value={formik.values.last}
+                onChange={formik.handleChange}
+                {...formik.getFieldProps("last")} />
+              <FormErrorMessage>{formik.errors.last}</FormErrorMessage>
+            </FormControl>
+            <FormControl isInvalid={formik.errors.email && formik.touched.email}>
+              <FormLabel htmlFor="email">Email Address</FormLabel>
+              <Input
+                border="solid #495E57"
+                name="email"
+                type="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                {...formik.getFieldProps("email")} />
+              <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+            </FormControl>
+            <Button
+              type="submit"
+              width="min(50vw, 210px)"
+              height="40px"
+              backgroundColor="#F4CE14"
+              textColor="black"
+              fontWeight="bolder"
+              borderRadius="16px"
+              borderStyle="solid"
+              cursor="pointer"
+              disabled={formik.isSubmitting}
+            >Reserve
             </Button>
-</VStack>
-    </form>
-    </Box>
+          </VStack>
+        </form>
+      </Box>
     </VStack>
-);
-};
-
-export default FormChakra;
+  );
+}

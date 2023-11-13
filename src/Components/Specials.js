@@ -1,7 +1,7 @@
-import greeksalad from "../images/greeksalad.jpg";
-import bruschetta from "../images/bruchetta.svg";
+import greeksaladop from "../images/greeksaladop.jpg";
+import bruschetta from "../images/Bruschetta.jpg";
 import lemon from "../images/lemon.jpg";
-import {Box, } from "@chakra-ui/react";
+import {Box, SimpleGrid} from "@chakra-ui/react";
 import Card from "./Card";
 import "../Styles/Specials.css";
 
@@ -11,7 +11,7 @@ const specials = [
       price: "$12.99",
       description: 
       "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
-      getImageSrc: () => require("../images/greeksalad.jpg"),
+      getImageSrc: () => require("../images/greeksaladop.jpg"),
     },
     {
       title: "Bruschetta",
@@ -36,11 +36,11 @@ function Specials () {
         <h1>This Weeks Specials!</h1>
         <button class="menu" >Online Menu</button>
         </div>
-        <Box
-        display="grid"
-        gridTemplateColumns="repeat(auto-fit,minmax(240px,1fr))"
-        gridGap={8}
-        padding={15}
+        <SimpleGrid
+      minChildWidth="300px" 
+      gridGap={10}
+      minH="full"
+      p={10}
       >
         {specials.map((special) => (
           <Card
@@ -51,7 +51,7 @@ function Specials () {
             imageSrc={special.getImageSrc()}
           />
         ))}
-      </Box>
+      </SimpleGrid>
    {/* </div>
     <div class="cards">
     <div class="card1">
