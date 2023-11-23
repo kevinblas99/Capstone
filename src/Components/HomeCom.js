@@ -4,8 +4,8 @@ import "../Styles/HomeCom.css";
 function HomeCom() {
     let navigate = useNavigate();
     return (
-<header class="hero">
-    <div class="titleshome" id="home-section" >
+<header class="hero" id="home-section">
+    <div class="titleshome" >
     <h1 class="title">Little Lemon</h1>
     <h3 class="subtitle">Chicago</h3>
     </div>

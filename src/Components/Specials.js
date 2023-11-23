@@ -37,10 +37,10 @@ function Specials () {
         <button class="menu" >Online Menu</button>
         </div>
         <SimpleGrid
-      minChildWidth="300px" 
+      minChildWidth="200px" 
       gridGap={10}
       minH="full"
-      p={10}
+      p={5}
       >
         {specials.map((special) => (
           <Card

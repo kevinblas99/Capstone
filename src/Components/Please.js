@@ -6,6 +6,7 @@ import logo from "../images/logo.svg";
 import {useNavigate} from 'react-router-dom';
 import { useRef, useEffect } from 'react';
 import { handleClick } from '../Hooks/handleClick';
+import mobLogo from "../images/mobLogo.jpg";
 
 //function Please() {
   //  const [display, changeDisplay] = useState('none');
@@ -80,7 +81,7 @@ mr={250}>
                 >
                 <Image
                 src={logo}
-                class="logo1"
+                className="logo1"
                 align="center"
                  />
                  </Link>
@@ -107,20 +108,23 @@ Home
 </HStack>
 </nav>
  </Flex>
-
+<Flex
+  my={2}
+>
  <IconButton
 
  variant="ghost"
  aria-label="Open Menu"
- size="lg"
- ml={2}
+ size="md"
+ ml={0}
  icon={<HamburgerIcon/>}
  display={['flex','flex','none','none']}
  onClick={() => changeDisplay('flex')}
  />
-<Flex     
-    position="relative"
-    left= "40%"
+<Center    
+
+    position="fixed"
+    left= "50%"
     top="50%"
     transform="translate(-50%, -50%)" >
 <Button
@@ -128,17 +132,15 @@ Home
         onClick={() => {navigate("/")}}
         variant="ghost"
         _hover="none"
-        my={3}
                 >
                 <Image
-                align="center"
                 display={['flex','flex','none','none']}
                 onClick={() => {navigate("/")}}
-                src={logo}
+                src={mobLogo}
                  class="logo1"
-                 my={3}
                  />
                  </Button>
+                 </Center>
                  </Flex>
                  </Flex>
             <Flex
@@ -152,13 +154,14 @@ Home
             overflowY="auto"
             flexDir="column"
             display={display}
-            >
+                        >
                 <Flex justify="flex-end">
                     <IconButton
                     mt={2}
                     mr={2}
                     aria-label='Close menu'
-                    size="lg"
+                    size="sm"
+                    variant="ghost"
                     icon={
                         <CloseIcon />
                     }       
@@ -169,6 +172,7 @@ Home
             flexDir="column"
             align="center"
             >
+              <Link to="/" className='nav-logo'>
                 <Button
                         
                         onClick={() => {navigate("/")}}
@@ -181,11 +185,12 @@ onClick={() => changeDisplay('none')}
                  class="logo1"
                  />
                  </Button>
-            <Link to="/" className="nav-item">
+                 </Link>
+            <Link to="home-section" className="nav-item">
     <Button 
     as="a" 
     variant="ghost" 
-    my={5} 
+    my={2} 
     w="100%"
     onClick={() => changeDisplay('none')}
 >
@@ -196,7 +201,7 @@ onClick={() => changeDisplay('none')}
  <Button 
  as="a"
   variant="ghost" 
-  my={5} 
+  my={2} 
   w="100%"
   onClick={() => changeDisplay('none')}
 >About
@@ -206,7 +211,7 @@ onClick={() => changeDisplay('none')}
 <Button 
 as="a" 
 variant="ghost" 
-my={5} 
+my={2} 
 w="100%"
 onClick={() => changeDisplay('none')}
 >Menu
@@ -216,7 +221,7 @@ onClick={() => changeDisplay('none')}
     <Button 
     as="a" 
     variant="ghost" 
-     my={5} 
+     my={2} 
      w="100%"
      onClick={() => changeDisplay('none')}
 >Reservations</Button>
@@ -226,7 +231,7 @@ onClick={() => changeDisplay('none')}
  <Button 
  as="a" 
  variant="ghost"
-  my={5} 
+  my={2} 
   w="100%"
   onClick={() => changeDisplay('none')}
 >Log In

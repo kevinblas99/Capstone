@@ -9,17 +9,19 @@ const Card = ({ title, description, imageSrc, price }) => {
 return (
   <Box
     w="full"
-   backgroundColor="#EDEFEE" 
+   backgroundColor="#EDEFEE"
    borderRadius='lg' border='1px'
     borderColor='black' padding={2} >
   <VStack spacing={2} align="-moz-initial">
   <Image
-      h="337px"
+      h="300px"
       w="full"
       borderRadius="12px"
       mb="10px"
       objectFit="cover"
-      src={imageSrc} borderRadius='lg'/>
+      src={imageSrc}
+      borderRadius="lg"
+      />
   <Flex>
   <Heading size="md" color='black'><b>{title}</b></Heading>
   <Spacer />

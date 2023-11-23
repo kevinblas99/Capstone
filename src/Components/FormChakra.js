@@ -10,10 +10,7 @@ import {
   VStack,
   NumberInput,
   NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  Heading
+  Heading,Container
 } from "@chakra-ui/react";
 import * as Yup from 'yup';
 import {useState} from "react";
@@ -47,8 +44,8 @@ import {useNavigate} from 'react-router-dom';
       console.log (values);
       console.log (actions);
       await new Promise ((resolve) => setTimeout(resolve, 1000));
-      actions.resetForm();
-      navigate("/confirmation");
+      navigate("/confirmation", { state: { data: values} });
+
     }
   });
 
@@ -70,13 +67,13 @@ import {useNavigate} from 'react-router-dom';
 
 
   return (
-    <VStack maxWidth="1500" p={20} alignItems="center">
-      <Heading as="h1" id="contactme-section">
-        Reserve Your Table
+    <VStack maxWidth="1200px" p={0} alignItems="center">
+      <Heading as="h1" fontSize="lg" fontFamily="Markazi-text" my={10} id="contactme-section">
+        Reserve your table
       </Heading>
-      <Box p={6} rounded="xl" w={["sm", "md", "lg", "xl", "2xl"]} backgroundColor="#EDEFEE">
+      <Container p={5} rounded="xl" backgroundColor="#EDEFEE">
         <form onSubmit={formik.handleSubmit}>
-          <VStack spacing={4}>
+          <VStack spacing={2}>
             <FormControl isInvalid={formik.errors.date && formik.touched.date}>
               <FormLabel htmlFor="date">Choose Date</FormLabel>
               <Input
@@ -93,7 +90,7 @@ import {useNavigate} from 'react-router-dom';
                 border="solid #495E57"
                 name="time"
                 value={formik.values.time}
-                onChange={formik.handleChangeChange}
+                onChange={formik.handleChange}
                 {...formik.getFieldProps("time")}>
                 {realTime}
               </Select>
@@ -175,7 +172,7 @@ import {useNavigate} from 'react-router-dom';
             </Button>
           </VStack>
         </form>
-      </Box>
+      </Container>
     </VStack>
   );
 }
