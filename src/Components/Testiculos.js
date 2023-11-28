@@ -49,11 +49,10 @@ import {
     role: string;
     content: string;
     avatar: string;
-    index: number;
   }
 
   function TestimonialCard(props: TestimonialCardProps) {
-    const { name, role, content, avatar, index } = props;
+    const { name, role, content, avatar } = props;
     return (
       <Flex
         boxShadow={'lg'}

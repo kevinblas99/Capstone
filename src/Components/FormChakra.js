@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import {
   Box,
+  Center,
   Button,
   FormControl,
   FormErrorMessage,
@@ -67,13 +68,13 @@ import {useNavigate} from 'react-router-dom';
 
 
   return (
-    <VStack maxWidth="1200px" p={0} alignItems="center">
+    <VStack maxWidth="1200px" alignItems="center">
       <Heading as="h1" fontSize="lg" fontFamily="Markazi-text" my={10} id="contactme-section">
         Reserve your table
       </Heading>
       <Container p={5} rounded="xl" backgroundColor="#EDEFEE">
         <form onSubmit={formik.handleSubmit}>
-          <VStack spacing={2}>
+          <VStack spacing={3}>
             <FormControl isInvalid={formik.errors.date && formik.touched.date}>
               <FormLabel htmlFor="date">Choose Date</FormLabel>
               <Input
@@ -157,20 +158,23 @@ import {useNavigate} from 'react-router-dom';
                 {...formik.getFieldProps("email")} />
               <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
             </FormControl>
+            </VStack>
+            <Center>
             <Button
               type="submit"
+              m={8}
               width="min(50vw, 210px)"
-              height="40px"
+              height="35px"
               backgroundColor="#F4CE14"
               textColor="black"
               fontWeight="bolder"
-              borderRadius="16px"
+              borderRadius="20px"
               borderStyle="solid"
               cursor="pointer"
               disabled={formik.isSubmitting}
             >Reserve
             </Button>
-          </VStack>
+            </Center>
         </form>
       </Container>
     </VStack>

@@ -122,13 +122,15 @@ Home
  onClick={() => changeDisplay('flex')}
  />
 <Center    
-
+    display={['flex','flex','none','none']}
     position="fixed"
     left= "50%"
     top="50%"
-    transform="translate(-50%, -50%)" >
+    transform="translate(-50%, -50%)"
+    zIndex="3"
+    >
 <Button
-        display={['flex','flex','none','none']}
+        // display={['flex','flex','none','none']}
         onClick={() => {navigate("/")}}
         variant="ghost"
         _hover="none"

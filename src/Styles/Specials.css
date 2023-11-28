@@ -37,3 +37,32 @@
     margin: auto;
     cursor: pointer;
 }
+
+@media(max-width:320px ) {
+    .menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: min(50vw, 210px);
+        height: 40px;
+        background-color: #F4CE14;
+        color: black;
+        font-size: 15px;
+        font-weight: bolder;
+        border-radius: 20px;
+        border-style: solid;
+        text-align: center;
+        margin: auto;
+        cursor: pointer;
+
+    }
+
+    .divspecials h1 {
+
+        font-family: 'Markazi text Medium'; 
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+}
