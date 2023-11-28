@@ -9,11 +9,11 @@ import { handleClick } from '../Hooks/handleClick';
 import mobLogo from "../images/mobLogo.jpg";
 
 //function Please() {
-  //  const [display, changeDisplay] = useState('none');
+  //  const [display, setDisplay] = useState('none');
     //const navigate = useNavigate;
 
     const Please = () => {
-        const [display, changeDisplay] = useState('none');
+        const [display, setDisplay] = useState('none');
         const navigate = useNavigate();
         const [previousPos, setPreviousPos] = useState(0);
         //Use Reference Hook for the header to change its style property
@@ -23,7 +23,7 @@ import mobLogo from "../images/mobLogo.jpg";
         //When the user scrolls down it will hide the header and when he/she scrolls down it will show the header.
         useEffect(()=>{
       
-          const scrollEvent = ()=>{
+          const scrollEvent = () => {
             const currentPos = window.scrollY;
             if (previousPos < currentPos ){
               headRef.current.style.transform = `translateY(-200px)`;
@@ -31,7 +31,7 @@ import mobLogo from "../images/mobLogo.jpg";
               headRef.current.style.transform = `translateY(0px)`;
             }
             setPreviousPos(currentPos);
-      
+            setDisplay('none');
           }
       
           window.addEventListener("scroll", scrollEvent);
@@ -119,15 +119,15 @@ Home
  ml={0}
  icon={<HamburgerIcon/>}
  display={['flex','flex','none','none']}
- onClick={() => changeDisplay('flex')}
+ onClick={() => setDisplay('flex')}
  />
-<Center    
+<Box   
     display={['flex','flex','none','none']}
-    position="fixed"
+    position="absolute"
     left= "50%"
     top="50%"
     transform="translate(-50%, -50%)"
-    zIndex="3"
+    zIndex="5"
     >
 <Button
         // display={['flex','flex','none','none']}
@@ -142,7 +142,7 @@ Home
                  class="logo1"
                  />
                  </Button>
-                 </Center>
+                 </Box>
                  </Flex>
                  </Flex>
             <Flex
@@ -167,7 +167,7 @@ Home
                     icon={
                         <CloseIcon />
                     }       
-                    onClick={() => changeDisplay('none')}
+                    onClick={() => setDisplay('none')}
                     />
                 </Flex>
             <Flex
@@ -182,7 +182,7 @@ Home
                         my={3}
                 >
                 <Image
-onClick={() => changeDisplay('none')}
+onClick={() => setDisplay('none')}
                 src={logo}
                  class="logo1"
                  />
@@ -194,7 +194,7 @@ onClick={() => changeDisplay('none')}
     variant="ghost" 
     my={2} 
     w="100%"
-    onClick={() => changeDisplay('none')}
+    onClick={() => setDisplay('none')}
 >
     Home
         </Button>
@@ -205,7 +205,7 @@ onClick={() => changeDisplay('none')}
   variant="ghost" 
   my={2} 
   w="100%"
-  onClick={() => changeDisplay('none')}
+  onClick={() => setDisplay('none')}
 >About
 </Button>
 </Link>
@@ -215,7 +215,7 @@ as="a"
 variant="ghost" 
 my={2} 
 w="100%"
-onClick={() => changeDisplay('none')}
+onClick={() => setDisplay('none')}
 >Menu
 </Button>
 </Link>
@@ -225,7 +225,7 @@ onClick={() => changeDisplay('none')}
     variant="ghost" 
      my={2} 
      w="100%"
-     onClick={() => changeDisplay('none')}
+     onClick={() => setDisplay('none')}
 >Reservations</Button>
 
 </Link>
@@ -235,7 +235,7 @@ onClick={() => changeDisplay('none')}
  variant="ghost"
   my={2} 
   w="100%"
-  onClick={() => changeDisplay('none')}
+  onClick={() => setDisplay('none')}
 >Log In
 </Button>
 </Link>
